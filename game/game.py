@@ -29,14 +29,18 @@ def scrollTxt(text):
 def printStory():
     print(blue)
     scrollTxt("You were on a cruise but you get shipwrecked on an island. \n")
+    print(purple)
     scrollTxt("You discover it is inhabited only by billionaires playing a game. \n")
     time.sleep(1)
     print(red)
     scrollTxt("The most dangerous game. \n")
     print(blue)
     scrollTxt("At each new location you have to complete a challenge designed by the billionaires. \n")
+    print(purple)
     scrollTxt("You get three (3) chances to fail a challenge. \n")
+    print(blue)
     scrollTxt("If you can pass five (5) challenges, you can leave (no transportation provided back.) \n")
+    print(purple)
     scrollTxt("If you fail, ...... \n") 
     time.sleep(1)
     print(red)
@@ -71,7 +75,7 @@ def showStatus():
     print("---------------------------")
   
 
-# an inventory, which is initially empty
+
 challenges = []
 
 #score
@@ -85,17 +89,17 @@ def fail():
         fails = fails + 1
         print(red)
         scrollTxt("You failed \n")
-        print(f"this is your number of fails: {fails} \n")
+        scrollTxt(f"this is your number of fails: {fails} \n")
     else:
         print(green)
         passes = passes + 1
         scrollTxt("You passed \n")
-        print(f"this is your number of passes: {passes} \n")
+        scrollTxt(f"this is your number of passes: {passes} \n")
 
 
                 	
 
-# a dictionary linking a room to other rooms
+
 locations = {
 
             'Boat Dock' : {
@@ -183,7 +187,7 @@ locations = {
             
         }
 
-# start the player in the Hall
+# start
 currentLocation = 'Boat Dock'
 
 showInstructions()
@@ -217,17 +221,15 @@ while True:
     #if they type 'get' first
     if move[0] == 'take' :
         # make two checks:
-        # 1. if the current room contains an item
-        # 2. if the item in the room matches the item the player wishes to get
         if "codename" in locations[currentLocation] and move[1] in locations[currentLocation]['codename']:
-            #add the item to their inventory
+            #add
             challenges.append(move[1])
             #display a helpful message
             print(move[1] + ' challenge accepted')
             scrollTxt(locations[currentLocation]['challenge'])
             print(' \n ')
             fail()
-            #delete the item key:value pair from the room's dictionary
+            #delete
             del locations[currentLocation]['codename']
         # if there's no item in the room or the item doesn't match
         else:
